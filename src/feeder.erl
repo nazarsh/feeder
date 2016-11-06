@@ -89,6 +89,8 @@ entry(E, title, State) ->
   update(E, #entry.title, State#state.chars);
 entry(E, updated, State) ->
   update(E, #entry.updated, State#state.chars);
+entry(E, published, State) ->
+  update(E, #entry.updated, State#state.chars);
 entry(E, _, _) ->
   E.
 
@@ -210,6 +212,7 @@ qname({_, "subtitle"}) -> subtitle;
 qname({_, "summary"}) -> summary;
 qname({_, "title"}) -> title;
 qname({_, "updated"}) -> updated;
+qname({_, "published"}) -> updated;
 qname({_, "url"}) -> url;
 qname({_, _}) -> undefined.
 
@@ -286,6 +289,6 @@ qname_test() -> q([
   {summary, ["summary", "description"]},
   {title, ["title"]},
   {undefined, ["wtf", "", "!"]},
-  {updated, ["updated", "pubDate"]}
+  {updated, ["updated", "pubDate", "published"]}
 ]).
 -endif.
