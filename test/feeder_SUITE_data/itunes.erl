@@ -12,10 +12,12 @@ wanted() -> {{
   <<"A show about everything">>,
   <<"All About Everything is a show about everything. Each week we dive into any subject known to man and talk about it as much as we can. Look for our Podcast in the iTunes Store">>,
   <<"All About Everything">>,
+  undefined,
   undefined}, [
 {
   entry,
   <<"John Doe">>,
+  undefined,
   <<"7:04">>,
   {enclosure,
     <<"http://example.com/podcasts/everything/AllAboutEverythingEpisode3.m4a">>,
@@ -31,6 +33,7 @@ wanted() -> {{
 {
   entry,
   <<"Jane Doe">>,
+  undefined,
   <<"4:34">>,
   {enclosure,
     <<"http://example.com/podcasts/everything/AllAboutEverythingEpisode2.mp3">>,
@@ -46,6 +49,7 @@ wanted() -> {{
 {
   entry,
   <<"Various">>,
+  undefined,
   <<"3:59">>,
   {enclosure,
     <<"http://example.com/podcasts/everything/AllAboutEverythingEpisode1.mp3">>,

@@ -1,4 +1,3 @@
-PROJECT = example
+PROJECT = fedex
 DEPS = feeder
-dep_feeder = git ../ master
 include ../erlang.mk

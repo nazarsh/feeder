@@ -1,13 +1,17 @@
 *.app
 *.beam
+*.d
 *.dump
 *.lock
 *.o
 *.plt
 *.so
+*cover*
 .erlang.mk*
 .eunit
+_build
 deps
+doc
 ebin
 elvis
 elvis.config

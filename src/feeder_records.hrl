@@ -13,11 +13,13 @@
   subtitle :: undefined | binary(),
   summary :: undefined | binary(),
   title :: undefined | binary(),
-  updated :: undefined | binary()
+  updated :: undefined | binary(),
+  url :: undefined | binary()
 }).
 
 -record(entry, {
   author :: undefined | binary(),
+  categories :: undefined | [binary()],
   duration :: undefined | binary(),
   enclosure :: undefined | enclosure(),
   id :: undefined | binary(),

@@ -12,10 +12,12 @@ wanted() -> {{
   undefined,
   undefined,
   undefined,
+  undefined,
   undefined}, [
 {
   entry,
   <<"John Gruber">>,
+  undefined,
   undefined,
   undefined,
   undefined,

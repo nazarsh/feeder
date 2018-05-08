@@ -1,8 +1,8 @@
+[![Build Status](https://secure.travis-ci.org/michaelnisi/feeder.svg)](http://travis-ci.org/michaelnisi/feeder)
+
 # feeder - parse RSS and Atom
 
 The **feeder** [Erlang](http://www.erlang.org/) library parses RSS and Atom formatted XML feeds. It is a stream based parser that sends its events through a callback interface.
-
-[![Build Status](https://secure.travis-ci.org/michaelnisi/feeder.svg)](http://travis-ci.org/michaelnisi/feeder)
 
 ## Usage
 
@@ -38,8 +38,8 @@ erl -pa ebin deps/*/ebin
 ```
 
 ```erlang
-example:start().
-example:print_titles("http://5by5.tv/rss").
+fedex:start().
+fedex:fetch("http://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml").
 ```
 
 ## Types
@@ -125,7 +125,7 @@ feeder:stream(Xml, Opts) -> Result
 ```erlang
 feeder_feeds:get(Key, Feed) -> Value
 ```
-- `Key = author | id | image | language | link | subtitle | summary | title | updated`
+- `Key = author | id | image | language | link | subtitle | summary | title | updated | url`
 - `Feed = feed()`
 - `Value = binary() | undefined`
 
@@ -139,9 +139,19 @@ feeder_enclosures:get(Key, Enclosure) -> Value
 ```erlang
 feeder_entries:get(Key, Entry) -> Value
 ```
-- `Key = author | duration | enclosure | id | image | link | subtitle | summary | title | updated`
+- `Key = author | categories | duration | enclosure | id | image | link | subtitle | summary | title | updated`
 - `Entry = entry()`
 - `Value = binary() | enclosure() | undefined`
+
+## Tests
+
+```bash
+$ make tests
+```
+
+## Install
+
+You can install **feeder** with [Rebar3](https://github.com/erlang/rebar3), of course, and there are [hex](https://hex.pm/packages/feeder) and [erlang.mk](https://github.com/ninenines/erlang.mk/tree/master/index) packages.
 
 ## License
 

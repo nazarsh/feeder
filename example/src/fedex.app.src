@@ -1,0 +1,28 @@
+{application, fedex, [
+  {description, "feeder http streaming example"},
+  {vsn, "2.0.0"},
+  {id, "git"},
+  {modules, [
+    fedex_logger,
+    fedex_parse,
+    fedex_parse_sup,
+    fedex_sup,
+    fedex,
+    fedfedex_app
+  ]},
+  {registered, [
+    fedex_event_man,
+    fedex_parse_sup,
+    fedex_sup
+  ]},
+  {applications, [
+    inets,
+    ssl,
+    kernel,
+    stdlib,
+    xmerl,
+    feeder
+  ]},
+  {mod, {fedex_app, []}},
+  {env, []}
+]}.

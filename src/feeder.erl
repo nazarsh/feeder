@@ -41,6 +41,15 @@ update(T, F, L) when L =/= [] ->
 update(T, _, _) ->
   T.
 
+%% Some fields are lists (e.g. category nodes)
+append(T, F, L) when L =/= [] ->
+  case element(F, T) of
+    undefined -> setelement(F, T, [trim(L)]);
+    E -> setelement(F, T, [trim(L)|E])
+  end;
+append(T, _, _) ->
+  T.
+
 -spec feed(feed(), atom(), state()) -> feed().
 feed(F, author, State) ->
   update(F, #feed.author, State#state.chars);
@@ -52,6 +61,8 @@ feed(F, image, State) ->
   update(F, #feed.image, State#state.chars);
 feed(F, url, State) when State#state.image =:= true ->
   update(F, #feed.image, State#state.chars);
+feed(F, url, State) ->
+  update(F, #feed.url, State#state.chars);
 feed(F, language, State) ->
   update(F, #feed.language, State#state.chars);
 feed(F, link, State) ->
@@ -72,6 +83,8 @@ entry(E, author, State) ->
   update(E, #entry.author, State#state.chars);
 entry(E, name, State) when State#state.author =:= true ->
   update(E, #entry.author, State#state.chars);
+entry(E, category, State) ->
+  append(E, #entry.categories, State#state.chars);
 entry(E, duration, State) ->
   update(E, #entry.duration, State#state.chars);
 entry(E, enclosure, _State) -> E;
@@ -131,6 +144,8 @@ attribute(feed, State, link, Attrs) ->
   feed(State#state.feed, link, State#state{chars=href(Attrs)});
 attribute(feed, State, image, Attrs) ->
   feed(State#state.feed, image, State#state{chars=href(Attrs)});
+attribute(feed, State, url, Attrs) ->
+  feed(State#state.feed, url, State#state{chars=href(Attrs)});
 attribute(feed, State, _, _) ->
   State#state.feed;
 attribute(entry, State, link, Attrs) ->
@@ -191,7 +206,9 @@ start_element(E, Attrs, State) when ?IS_ENTRY ->
 
 %% First pass
 
+qname({"atom", "link"}) -> url;
 qname({_, "author"}) -> author;
+qname({_, "category"}) -> category;
 qname({_, "channel"}) -> feed;
 qname({_, "contributor"}) -> author;
 qname({_, "creator"}) -> author;
@@ -263,32 +280,33 @@ stream(Xml, Opts) ->
   xmerl_sax_parser:stream(Xml, opts(stream, Opts)).
 
 -ifdef(TEST).
-trim_test() ->
-  ?assertMatch(<<"">>, trim("")),
-  ?assertMatch(<<"hello">>, trim(" hello ")),
-  ok.
+trim_test_() -> [
+  ?_assertMatch(<<"">>, trim("")),
+  ?_assertMatch(<<"hello">>, trim(" hello "))
+].
 
-q([{Wanted, Names}|T]) ->
-  F = fun (Name) -> ?assertMatch(Wanted, qname({"", Name})) end,
-  lists:map(F, Names),
-  q(T);
-q([]) ->
-  ok.
-qname_test() -> q([
-  {author, ["author"]},
-  {duration, ["duration"]},
-  {enclosure, ["enclosure"]},
-  {entry, ["entry", "item"]},
-  {feed, ["feed", "channel"]},
-  {id, ["id", "guid"]},
-  {image, ["image"]},
-  {language, ["language"]},
-  {link, ["link"]},
-  {name, ["name"]},
-  {subtitle, ["subtitle"]},
-  {summary, ["summary", "description"]},
-  {title, ["title"]},
-  {undefined, ["wtf", "", "!"]},
-  {updated, ["updated", "pubDate", "published"]}
-]).
+q([{Wanted, QualifiedNames}|T], Tests) ->
+  F = fun (QualifiedName) -> ?_assertMatch(Wanted, qname(QualifiedName)) end,
+  q(T, [Tests|lists:map(F, QualifiedNames)]);
+q([], Tests) ->
+  Tests.
+qname_test_() -> q([
+  {author, [{"", "author"}]},
+  {category, [{"", "category"}]},
+  {duration, [{"", "duration"}]},
+  {enclosure, [{"", "enclosure"}]},
+  {entry, [{"", "entry"}, {"", "item"}]},
+  {feed, [{"", "feed"}, {"", "channel"}]},
+  {id, [{"", "id"}, {"", "guid"}]},
+  {image, [{"", "image"}]},
+  {language, [{"", "language"}]},
+  {link, [{"", "link"}]},
+  {name, [{"", "name"}]},
+  {subtitle, [{"", "subtitle"}]},
+  {summary, [{"", "summary"}, {"", "description"}]},
+  {title, [{"", "title"}]},
+  {undefined, [{"", "wtf"}, {"", ""}, {"", "!"}]},
+  {updated, [{"", "updated"}, {"", "pubDate"}, {"", "published"}]},
+  {url, [{"atom", "link"}]}
+], []).
 -endif.
