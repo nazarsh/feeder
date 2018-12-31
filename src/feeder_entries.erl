@@ -25,4 +25,6 @@ get(summary, E) ->
 get(title, E) ->
   E#entry.title;
 get(updated, E) ->
-  E#entry.updated.
+  E#entry.updated;
+get(season, E) ->
+  E#entry.season.

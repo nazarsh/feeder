@@ -2,14 +2,16 @@ defmodule Feeder.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :feeder,
-     version: "2.2.4",
-     description: description(),
-     package: package(),
-     deps: deps(),
-     name: "feeder",
-     source_url: "https://github.com/michaelnisi/feeder",
-     docs: [main: "readme", extras: ["README.md"]]]
+    [
+      app: :feeder,
+      version: "2.2.5",
+      description: description(),
+      package: package(),
+      deps: deps(),
+      name: "feeder",
+      source_url: "https://github.com/michaelnisi/feeder",
+      docs: [main: "readme", extras: ["README.md"]]
+    ]
   end
 
   def application do
@@ -27,9 +29,11 @@ defmodule Feeder.Mixfile do
   end
 
   defp package do
-    [files: ~w(src erlang.mk Makefile README.md LICENSE),
-     maintainers: ["Michael Nisi"],
-     licenses: ["MIT"],
-     links: %{"GitHub" => "https://github.com/michaelnisi/feeder"}]
+    [
+      files: ~w(src erlang.mk Makefile README.md LICENSE),
+      maintainers: ["Michael Nisi"],
+      licenses: ["MIT"],
+      links: %{"GitHub" => "https://github.com/michaelnisi/feeder"}
+    ]
   end
 end

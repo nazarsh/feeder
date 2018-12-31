@@ -75,6 +75,8 @@ feed(F, title, State) ->
   update(F, #feed.title, State#state.chars);
 feed(F, updated, State) ->
   update(F, #feed.updated, State#state.chars);
+feed(F, type, State) ->
+  update(F, #feed.type, State#state.chars);
 feed(F, _, _) ->
   F.
 
@@ -104,6 +106,8 @@ entry(E, updated, State) ->
   update(E, #entry.updated, State#state.chars);
 entry(E, published, State) ->
   update(E, #entry.updated, State#state.chars);
+entry(E, season, State) ->
+  update(E, #entry.season, State#state.chars);
 entry(E, _, _) ->
   E.
 
@@ -231,6 +235,8 @@ qname({_, "title"}) -> title;
 qname({_, "updated"}) -> updated;
 qname({_, "published"}) -> updated;
 qname({_, "url"}) -> url;
+qname({_, "type"}) -> type;
+qname({_, "season"}) -> season;
 qname({_, _}) -> undefined.
 
 event(startDocument, _, S) ->
@@ -307,6 +313,8 @@ qname_test_() -> q([
   {title, [{"", "title"}]},
   {undefined, [{"", "wtf"}, {"", ""}, {"", "!"}]},
   {updated, [{"", "updated"}, {"", "pubDate"}, {"", "published"}]},
-  {url, [{"atom", "link"}]}
+  {url, [{"atom", "link"}]},
+  {type, [{"", "type"}]},
+  {season, [{"", "season"}]}
 ], []).
 -endif.

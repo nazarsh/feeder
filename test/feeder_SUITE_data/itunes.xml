@@ -28,6 +28,8 @@
 
         </itunes:owner>
 
+        <itunes:type>episodic</itunes:type>
+
         <itunes:image href="http://example.com/podcasts/everything/AllAboutEverything.jpg" />
 
         <itunes:category text="Technology">
@@ -59,6 +61,8 @@
             <pubDate>Wed, 15 Jun 2005 19:00:00 GMT</pubDate>
 
             <itunes:duration>7:04</itunes:duration>
+
+            <itunes:season>1</itunes:season>
 
         </item>
 

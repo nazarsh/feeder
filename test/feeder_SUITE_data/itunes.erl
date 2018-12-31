@@ -13,7 +13,8 @@ wanted() -> {{
   <<"All About Everything is a show about everything. Each week we dive into any subject known to man and talk about it as much as we can. Look for our Podcast in the iTunes Store">>,
   <<"All About Everything">>,
   undefined,
-  undefined}, [
+  undefined,
+  <<"episodic">>}, [
 {
   entry,
   <<"John Doe">>,
@@ -29,7 +30,8 @@ wanted() -> {{
   <<"Rückblicke, Einblicke und Ausblicke auf das netzpolitische Geschehen als wöchentlicher Podcast"/utf8>>,
   <<"This week we talk about salt and pepper shakers, comparing and contrasting pour rates, construction materials, and overall aesthetics. Come and join the party!">>,
   <<"Shake Shake Shake Your Spices">>,
-  <<"Wed, 15 Jun 2005 19:00:00 GMT">>},
+  <<"Wed, 15 Jun 2005 19:00:00 GMT">>,
+  <<"1">>},
 {
   entry,
   <<"Jane Doe">>,
@@ -45,7 +47,8 @@ wanted() -> {{
   <<"Comparing socket wrenches is fun!">>,
   <<"This week we talk about metric vs. old english socket wrenches. Which one is better? Do you really need both? Get all of your answers here.">>,
   <<"Socket Wrench Shootout">>,
-  <<"Wed, 8 Jun 2005 19:00:00 GMT">>},
+  <<"Wed, 8 Jun 2005 19:00:00 GMT">>,
+  undefined},
 {
   entry,
   <<"Various">>,
@@ -61,5 +64,6 @@ wanted() -> {{
   <<"Red + Blue != Purple">>,
   <<"This week we talk about surviving in a Red state if you are a Blue person. Or vice versa.">>,
   <<"Red, Whine, & Blue">>,
-  <<"Wed, 1 Jun 2005 19:00:00 GMT">>}
+  <<"Wed, 1 Jun 2005 19:00:00 GMT">>,
+  undefined}
 ]}.

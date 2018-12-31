@@ -13,7 +13,8 @@ wanted() -> {{
   <<"Liftoff to Space Exploration.">>,
   <<"Liftoff News">>,
   <<"Tue, 10 Jun 2003 04:00:00 GMT">>,
-  <<"http://liftoff.msfc.nasa.gov/">>}, [
+  <<"http://liftoff.msfc.nasa.gov/">>,
+  undefined}, [
 {
   entry,
   undefined,
@@ -26,7 +27,8 @@ wanted() -> {{
   undefined,
   <<"How do Americans get ready to work with Russians aboard the International Space Station? They take a crash course in culture, language and protocol at Russia's <a href=\"http://howe.iki.rssi.ru/GCTC/gctc_e.htm\">Star City</a>.">>,
   <<"Star City">>,
-  <<"Tue, 03 Jun 2003 09:39:21 GMT">>},
+  <<"Tue, 03 Jun 2003 09:39:21 GMT">>,
+  undefined},
 {
   entry,
   undefined,
@@ -39,7 +41,8 @@ wanted() -> {{
   undefined,
   <<"Sky watchers in Europe, Asia, and parts of Alaska and Canada will experience a <a href=\"http://science.nasa.gov/headlines/y2003/30may_solareclipse.htm\">partial eclipse of the Sun</a> on Saturday, May 31st.">>,
   undefined,
-  <<"Fri, 30 May 2003 11:06:42 GMT">>},
+  <<"Fri, 30 May 2003 11:06:42 GMT">>,
+  undefined},
 {
   entry,
   undefined,
@@ -52,7 +55,8 @@ wanted() -> {{
   undefined,
   <<"Before man travels to Mars, NASA hopes to design new engines that will let us fly through the Solar System more quickly.  The proposed VASIMR engine would do that.">>,
   <<"The Engine That Does More">>,
-  <<"Tue, 27 May 2003 08:37:32 GMT">>},
+  <<"Tue, 27 May 2003 08:37:32 GMT">>,
+  undefined},
 {
   entry,
   undefined,
@@ -65,5 +69,6 @@ wanted() -> {{
   undefined,
   <<"Compared to earlier spacecraft, the International Space Station has many luxuries, but laundry facilities are not one of them.  Instead, astronauts have other options.">>,
   <<"Astronauts' Dirty Laundry">>,
-  <<"Tue, 20 May 2003 08:56:02 GMT">>}
+  <<"Tue, 20 May 2003 08:56:02 GMT">>,
+  undefined}
 ]}.

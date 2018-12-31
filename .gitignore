@@ -16,3 +16,4 @@ ebin
 elvis
 elvis.config
 logs
+.elixir_ls/

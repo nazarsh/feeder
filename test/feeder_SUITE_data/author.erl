@@ -13,6 +13,7 @@ wanted() -> {{
   undefined,
   undefined,
   undefined,
+  undefined,
   undefined}, [
 {
   entry,
@@ -23,6 +24,7 @@ wanted() -> {{
   undefined,
   undefined,
   <<"http://daringfireball.net/2015/03/apple_watch_prelude">>,
+  undefined,
   undefined,
   undefined,
   undefined,

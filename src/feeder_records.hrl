@@ -14,8 +14,9 @@
   summary :: undefined | binary(),
   title :: undefined | binary(),
   updated :: undefined | binary(),
-  url :: undefined | binary()
-}).
+  url :: undefined | binary(),
+  type :: undefined | binary()
+  }).
 
 -record(entry, {
   author :: undefined | binary(),
@@ -28,7 +29,8 @@
   subtitle :: undefined | binary(),
   summary :: undefined | binary(),
   title :: undefined | binary(),
-  updated :: undefined | binary()
+  updated :: undefined | binary(),
+  season :: undefined | binary()
 }).
 
 -type entry() :: #entry{}.
